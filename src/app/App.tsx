@@ -1,5 +1,12 @@
-function App() {
-  return <div>a</div>;
-}
+import { ReactQueryDevtools } from 'react-query/devtools';
 
-export default App;
+import { AppProviders } from '@/providers/AppProviders';
+import { AppRouter } from '@/routing/AppRouter';
+export const App = () => {
+  return (
+    <AppProviders>
+      <AppRouter />
+      {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+    </AppProviders>
+  );
+};
