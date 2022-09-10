@@ -20,9 +20,9 @@ export const useAxiosStrategy = (): ApiClientContextValue => {
     <TData>(): QueryFunction<TData> =>
       async ({ queryKey: [url] }) => {
         if (typeof url === 'string') {
-          const { data } = await client.get<TData>(url);
+          const res = await client.get<TData>(url);
 
-          return data;
+          return res?.data;
         }
         throw new Error('Invalid QueryKey');
       },

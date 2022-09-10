@@ -15,11 +15,8 @@ export const StyledTitle = styled.h1`
 `;
 
 const _StyledButton = styled(Button)`
-  text-transform: uppercase;
   font-size: 1.1rem;
-  font-weight: bold;
   width: 150px;
-  border-radius: 15px;
   box-shadow: 0 5px 8px -2px ${({ theme }) => theme.colors.dark[5]};
 `;
 

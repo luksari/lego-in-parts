@@ -32,7 +32,7 @@ export type Color = {
   external_ids: Record<string, ExternalColorId>;
 };
 
-export type GetPartsResult = {
+export type MinifigPart = {
   id: number;
   inv_part_id: number;
   part: Part;
@@ -43,3 +43,19 @@ export type GetPartsResult = {
   element_id: string;
   num_sets: number;
 };
+
+export type GetMinifigsPartsResponse = {
+  count: number;
+  next: number | null;
+  previous: number | null;
+  results: MinifigPart;
+};
+
+export type GetMinifigsResponse = {
+  count: number;
+  next: number | null;
+  previous: number | null;
+  results: Minifig[];
+};
+
+export type RebrickableError = { detail: string };
