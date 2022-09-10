@@ -6,7 +6,7 @@
    3. Vite ✅
    4. React-router ✅
 2. Create Routing for homepage ✅
-3. Install Mantine to use components
+3. Install Mantine to use components ✅
 4. Install styling library (emotion/styled-components)
 5. Set up a theme
 6. Get the homepage done
