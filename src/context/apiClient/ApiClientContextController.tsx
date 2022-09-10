@@ -2,13 +2,14 @@ import { useMemo } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { useAxiosStrategy } from 'hooks/useAxiosStrategy/useAxiosStrategy';
-import { ApiClientContext } from 'context/apiClient/apiClientContext/ApiClientContext';
-import { ApiClientContextValue } from 'context/apiClient/apiClientContext/ApiClientContext.types';
 
 import { ApiClientControllerProps } from './ApiClientContextController.types';
+import { ApiClientContext } from './ApiClientContext';
+
+import { ApiClientContextValue } from '@/context/apiClient/ApiClientContext.types';
 
 export const ApiClientContextController = ({ children }: ApiClientControllerProps) => {
-  const { queryFn, mutationFn, infiniteQueryFn } = useAxiosStrategy();
+  const { queryFn } = useAxiosStrategy();
 
   const queryClient = useMemo(() => {
     return new QueryClient({
@@ -24,10 +25,8 @@ export const ApiClientContextController = ({ children }: ApiClientControllerProp
   const ctxValue: ApiClientContextValue = useMemo(
     () => ({
       queryFn,
-      mutationFn,
-      infiniteQueryFn,
     }),
-    [queryFn, mutationFn, infiniteQueryFn],
+    [queryFn],
   );
 
   return (

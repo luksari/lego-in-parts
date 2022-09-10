@@ -1,4 +1,14 @@
-# Plan
+# Lego minifigs for Tivix
+
+# Setup
+
+1. Copy env variables
+```bash
+cp .env
+
+```
+
+## Plan
 
 1. Create basic configuration with the following:
    1. Axios ✅
