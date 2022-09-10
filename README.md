@@ -1,4 +1,19 @@
-# Plan
+# Lego minifigs for Tivix
+
+# Setup
+
+1. Copy environmental variables file for each environment and pass necessary values to envs
+```shell
+cp .env.dist .env.development
+cp .env.dist .env.production
+```
+2. Start project
+
+```shell
+npm run dev
+```
+
+## Plan
 
 1. Create basic configuration with the following:
    1. Axios ✅
