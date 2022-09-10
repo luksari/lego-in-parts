@@ -26,7 +26,7 @@ export const Home = () => {
     <Layout>
       <StyledHomeWrapper>
         <StyledTitle>Lego minifigs mystery box</StyledTitle>
-        <StyledButton radius={'xl'} uppercase loading={isLoading} disabled={isLoading} onClick={handleCTAClick}>
+        <StyledButton radius={'xl'} uppercase loading={isLoading} onClick={handleCTAClick}>
           Let's go!
         </StyledButton>
       </StyledHomeWrapper>
