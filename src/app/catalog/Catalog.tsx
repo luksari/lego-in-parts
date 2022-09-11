@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router';
+import { Navigate, useLocation, useNavigate } from 'react-router';
 import { Center, SimpleGrid, Button } from '@mantine/core';
 import { useState } from 'react';
 
@@ -14,8 +14,15 @@ export const Catalog = () => {
   const navigate = useNavigate();
   const [chosenMinifig, setChosenMinifig] = useState<Minifig | null>(null);
 
+  const handleProceedToSummary = () => {
+    if (!chosenMinifig) {
+      return;
+    }
+    navigate(AppRoutes.Summary.getPath(chosenMinifig.set_num));
+  };
+
   if (!state) {
-    navigate(AppRoutes.Home);
+    return <Navigate to={AppRoutes.Home.getPath()} replace />;
   }
 
   return (
@@ -31,7 +38,7 @@ export const Catalog = () => {
         ))}
       </SimpleGrid>
       <Center mt={45}>
-        <Button radius={'lg'} uppercase disabled={!chosenMinifig}>
+        <Button radius={'lg'} uppercase disabled={!chosenMinifig} onClick={handleProceedToSummary}>
           Proceed to shipment
         </Button>
       </Center>

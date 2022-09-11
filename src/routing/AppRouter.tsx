@@ -9,8 +9,8 @@ export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoutes.Home} element={<Home />} />
-        <Route path={AppRoutes.Catalog} element={<Catalog />} />
+        <Route path={AppRoutes.Home.path} element={<Home />} />
+        <Route path={AppRoutes.Catalog.path} element={<Catalog />} />
       </Routes>
     </BrowserRouter>
   );

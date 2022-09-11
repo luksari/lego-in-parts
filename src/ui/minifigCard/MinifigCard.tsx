@@ -1,4 +1,4 @@
-import { Card, Image, Center, Button, Text, clsx, Group } from '@mantine/core';
+import { Card, Image, Button, Text, clsx, Group } from '@mantine/core';
 
 import { useStyles } from './MinifigCard.styles';
 
@@ -8,7 +8,6 @@ import { stopBubbling } from '@/utils/stopBubbling';
 
 export const MinifigCard = ({ minifig, isSelected, onClick }: MinifigCardProps) => {
   const { classes } = useStyles();
-  console.log(minifig.set_url);
 
   return (
     <div tabIndex={0} onClick={() => onClick(minifig)}>
@@ -18,13 +17,19 @@ export const MinifigCard = ({ minifig, isSelected, onClick }: MinifigCardProps) 
         radius={'md'}
         className={clsx(classes.cardWrapper, { [classes.selectedCard]: isSelected })}
       >
-        <Center>
+        <Group position={'center'} spacing={8}>
           <Image src={minifig.set_img_url || noImage} height={160} width={160} mt={'md'} />
-        </Center>
 
-        <Text weight={500} className={classes.cardName} mt={'md'} align={'center'}>
-          {minifig.name}
-        </Text>
+          {!minifig.set_img_url && (
+            <Text align={'center'} color={'dimmed'}>
+              Placeholder image
+            </Text>
+          )}
+
+          <Text weight={500} className={classes.cardName} align={'center'}>
+            {minifig.name}
+          </Text>
+        </Group>
 
         <Button
           component={'a'}
