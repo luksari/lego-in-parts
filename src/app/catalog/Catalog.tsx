@@ -10,7 +10,7 @@ import { Minifig } from '@/api/actions/minifigs/minifigs.types';
 
 export const Catalog = () => {
   const { state } = useLocation();
-  const minifigs = (state as MinifigsLocationStateFromHome).minifigs;
+  const minifigs = (state as MinifigsLocationStateFromHome)?.minifigs;
   const navigate = useNavigate();
   const [chosenMinifig, setChosenMinifig] = useState<Minifig | null>(null);
 

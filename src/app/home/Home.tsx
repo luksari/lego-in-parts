@@ -11,7 +11,7 @@ import { HomeLocationStateFromSummary } from '@/app/home/Home.types';
 
 export const Home = () => {
   const { state } = useLocation();
-  const message = (state as HomeLocationStateFromSummary).messageFromSummary;
+  const message = (state as HomeLocationStateFromSummary)?.messageFromSummary;
 
   const { classes } = useStyles();
   const { isLoading, refetch } = useGetHarryPotterMinifigs({ enabled: false });

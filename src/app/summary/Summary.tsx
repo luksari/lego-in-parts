@@ -16,7 +16,7 @@ export const Summary = () => {
   const { set_num } = useParams<SummaryURLParam>();
   const { state } = useLocation();
   const navigate = useNavigate();
-  const minifig = (state as MinifigLocationStateFromCatalog).minifig;
+  const minifig = (state as MinifigLocationStateFromCatalog)?.minifig;
   const [isFormValid, setIsFormValid] = useState(false);
   const { data: minifigPartsRes } = useGetMinifigParts(set_num || '', { enabled: !!set_num });
   const { isLoading: isSubmitting, mutate: submitMinifigMutate } = useSubmitMinifig({
@@ -32,6 +32,7 @@ export const Summary = () => {
       message: 'You need to provide correct ID of minifig',
     });
   }
+
   const handleSummaryClick = useCallback(
     (data: ShipmentFormData) => {
       submitMinifigMutate({
