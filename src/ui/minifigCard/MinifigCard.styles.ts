@@ -13,17 +13,24 @@ export const useStyles = createStyles((theme) => ({
     cursor: 'pointer',
 
     '&:hover, &:focus': {
-      transform: 'scale(1.05)',
+      transform: 'scale(1.03)',
       transformOrigin: '50% 50%',
-      boxShadow: `0 0 4px 4px ${theme.colors.yellow[7]}`,
+      outline: `4px solid ${theme.colors.yellow[7]}`,
+
+      outlineOffset: 4,
     },
   },
   selectedCard: {
-    boxShadow: `0 0 4px 4px ${theme.colors.green[7]}`,
-    transform: 'scale(1.05)',
+    outline: `4px solid ${theme.colors.green[7]}`,
+    zIndex: 1,
+
+    outlineOffset: 4,
+    transform: 'scale(1.07)',
 
     '&:hover, &:focus': {
-      boxShadow: `0 0 4px 4px ${theme.colors.green[7]}`,
+      transform: 'scale(1.07)',
+      outline: `4px solid ${theme.colors.green[7]}`,
+      outlineOffset: 4,
     },
   },
   btn: {

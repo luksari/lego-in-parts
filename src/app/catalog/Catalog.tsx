@@ -1,5 +1,5 @@
 import { Navigate, useLocation, useNavigate } from 'react-router';
-import { Center, SimpleGrid, Button } from '@mantine/core';
+import { Center, SimpleGrid, Button, Title } from '@mantine/core';
 import { useState } from 'react';
 
 import { Layout } from '@/ui/layout/Layout';
@@ -18,7 +18,8 @@ export const Catalog = () => {
     if (!chosenMinifig) {
       return;
     }
-    navigate(AppRoutes.Summary.getPath(chosenMinifig.set_num));
+
+    navigate(AppRoutes.Summary.getPath(chosenMinifig.set_num), { state: { minifig: chosenMinifig } });
   };
 
   if (!state) {
@@ -27,6 +28,11 @@ export const Catalog = () => {
 
   return (
     <Layout>
+      <Center mb={'xl'}>
+        <Title order={1} transform={'uppercase'} color={'white'} weight={700}>
+          Choose your minifig
+        </Title>
+      </Center>
       <SimpleGrid cols={3} spacing={'xl'}>
         {minifigs.map((minifig) => (
           <MinifigCard
@@ -38,7 +44,14 @@ export const Catalog = () => {
         ))}
       </SimpleGrid>
       <Center mt={45}>
-        <Button radius={'lg'} uppercase disabled={!chosenMinifig} onClick={handleProceedToSummary}>
+        <Button
+          size={'lg'}
+          radius={'xl'}
+          uppercase
+          disabled={!chosenMinifig}
+          onClick={handleProceedToSummary}
+          color={'yellow'}
+        >
           Proceed to shipment
         </Button>
       </Center>

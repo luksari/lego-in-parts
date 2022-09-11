@@ -1,3 +1,8 @@
+import { AxiosError } from 'axios';
+
+import { ShipmentFormData } from '@/app/summary/shipmentForm/ShipmentForm.types';
+import { MutationFn } from '@/hooks/useMutation/useMutation.types';
+
 export type Minifig = {
   set_num: string;
   name: string;
@@ -9,7 +14,7 @@ export type Minifig = {
 
 export type ExternalPartId = string[];
 
-export type Part = {
+export type PartDetails = {
   part_num: string;
   name: string;
   part_cat_id: number;
@@ -35,7 +40,7 @@ export type Color = {
 export type MinifigPart = {
   id: number;
   inv_part_id: number;
-  part: Part;
+  part: PartDetails;
   color: Color;
   set_num: string;
   quantity: number;
@@ -48,7 +53,7 @@ export type GetMinifigsPartsResponse = {
   count: number;
   next: number | null;
   previous: number | null;
-  results: MinifigPart;
+  results: MinifigPart[];
 };
 
 export type GetMinifigsResponse = {
@@ -59,3 +64,18 @@ export type GetMinifigsResponse = {
 };
 
 export type RebrickableError = { detail: string };
+
+export type SubmitMinifigReqBody = {
+  minifig: Minifig;
+  shipment: ShipmentFormData;
+};
+
+export type SubmitMinifigResponse = {
+  message: string;
+};
+
+export type SubmitMinifigMutationFn = () => MutationFn<
+  SubmitMinifigReqBody,
+  SubmitMinifigResponse,
+  AxiosError<SubmitMinifigResponse>
+>;

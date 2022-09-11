@@ -9,7 +9,7 @@ import { ApiClientContext } from './ApiClientContext';
 import { ApiClientContextValue } from '@/context/apiClient/ApiClientContext.types';
 
 export const ApiClientContextController = ({ children }: ApiClientControllerProps) => {
-  const { queryFn } = useAxiosStrategy();
+  const { queryFn, mutationFn } = useAxiosStrategy();
 
   const queryClient = useMemo(() => {
     return new QueryClient({
@@ -25,8 +25,9 @@ export const ApiClientContextController = ({ children }: ApiClientControllerProp
   const ctxValue: ApiClientContextValue = useMemo(
     () => ({
       queryFn,
+      mutationFn,
     }),
-    [queryFn],
+    [mutationFn, queryFn],
   );
 
   return (
