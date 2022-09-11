@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core';
 
-export const useStyles = createStyles((theme) => ({
+export const useStyles = createStyles(() => ({
   wrapper: {
     display: 'flex',
     justifyContent: 'center',
@@ -8,6 +8,6 @@ export const useStyles = createStyles((theme) => ({
     overflowX: 'hidden',
     width: '100vw',
     height: '100vh',
-    background: theme.colors.violet[9],
+    background: '#1F2136',
   },
 }));

@@ -1,5 +1,5 @@
 import { Navigate, useLocation, useParams } from 'react-router';
-import { SimpleGrid } from '@mantine/core';
+import { Grid, SimpleGrid, Transition } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 
 import { Layout } from '@/ui/layout/Layout';
@@ -7,7 +7,6 @@ import { ShipmentForm } from '@/app/summary/shipmentForm/ShipmentForm';
 import { MinifigLocationStateFromCatalog, SummaryURLParam } from '@/app/summary/Summary.types';
 import { useGetMinifigParts } from '@/api/hooks/useGetMinifigParts/useGetMinifigParts';
 import { MinifigDetails } from '@/app/summary/minifigDetails/MinifigDetails';
-import { MinifigsLocationStateFromHome } from '@/app/catalog/Catalog.types';
 import { AppRoutes } from '@/routing/routes';
 
 export const Summary = () => {
@@ -31,10 +30,16 @@ export const Summary = () => {
 
   return (
     <Layout>
-      <SimpleGrid cols={2} spacing={'xl'}>
-        <ShipmentForm />
-        <MinifigDetails minifig={minifig} parts={parts} />
-      </SimpleGrid>
+      <Grid columns={12} gutter={'lg'}>
+        <Grid.Col span={8}>
+          <ShipmentForm />
+        </Grid.Col>
+        <Grid.Col span={4}>
+          <Transition mounted={!!data} transition={'slide-left'} duration={400} timingFunction={'ease'}>
+            {(styles) => <MinifigDetails style={styles} minifig={minifig} parts={parts} />}
+          </Transition>
+        </Grid.Col>
+      </Grid>
     </Layout>
   );
 };

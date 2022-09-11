@@ -1,17 +1,17 @@
-import { Card, Center, Grid, Group, Image, ScrollArea, Stack, Text } from '@mantine/core';
+import { Button, Card, Center, Grid, Group, Image, ScrollArea, Stack, Text, Title } from '@mantine/core';
 
 import { MinifigDetailsProps } from '@/app/summary/minifigDetails/MinifigDetails.types';
 import noImage from '@/assets/nil_mf.webp';
 import { useStyles } from '@/app/summary/minifigDetails/MinifigDetails.styles';
 
-export const MinifigDetails = ({ minifig, parts }: MinifigDetailsProps) => {
+export const MinifigDetails = ({ minifig, parts, style }: MinifigDetailsProps) => {
   const { classes } = useStyles();
 
   return (
-    <Card shadow={'md'} p={'md'} radius={'md'} className={classes.wrapper}>
-      <Text component={'h2'} weight={500} size={'xl'}>
+    <Card style={style} shadow={'md'} p={'md'} radius={'md'} className={classes.wrapper}>
+      <Title order={2} weight={500} size={'xl'}>
         Summary
-      </Text>
+      </Title>
       <Group position={'center'} spacing={8}>
         <Image src={minifig.set_img_url || noImage} height={120} width={120} mt={'md'} />
 
@@ -29,7 +29,7 @@ export const MinifigDetails = ({ minifig, parts }: MinifigDetailsProps) => {
         <Group mt={'lg'} mb={'lg'}>
           <Text>There are {parts.length} parts in this minifig:</Text>
           <Stack spacing={'lg'}>
-            <ScrollArea.Autosize offsetScrollbars maxHeight={250} mx={'auto'} sx={{ width: 'auto' }}>
+            <ScrollArea.Autosize offsetScrollbars maxHeight={320} mx={'auto'} sx={{ width: 'auto' }}>
               {parts.map((part) => (
                 <Grid columns={12} gutter={8} key={part.part.part_num}>
                   <Grid.Col span={'auto'}>
@@ -48,6 +48,11 @@ export const MinifigDetails = ({ minifig, parts }: MinifigDetailsProps) => {
                 </Grid>
               ))}
             </ScrollArea.Autosize>
+            <Center mt={'xl'}>
+              <Button radius={'xl'} size={'md'}>
+                Summary
+              </Button>
+            </Center>
           </Stack>
         </Group>
       )}

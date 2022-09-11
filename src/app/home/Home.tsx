@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import { useCallback } from 'react';
 import sampleSize from 'lodash/sampleSize';
-import { Button } from '@mantine/core';
+import { Button, Title } from '@mantine/core';
 
 import { Layout } from '@/ui/layout/Layout';
 import { AppRoutes } from '@/routing/routes';
@@ -25,8 +25,10 @@ export const Home = () => {
   return (
     <Layout>
       <div className={classes.wrapper}>
-        <h1 className={classes.title}>Lego minifigs mystery box</h1>
-        <Button className={classes.ctaButton} radius={'xl'} uppercase loading={isLoading} onClick={handleCTAClick}>
+        <Title order={1} transform={'uppercase'} mb={'xl'} weight={700} color={'white'}>
+          Lego minifigs mystery box
+        </Title>
+        <Button size={'lg'} radius={'xl'} uppercase loading={isLoading} onClick={handleCTAClick} color={'yellow'}>
           Let's go!
         </Button>
       </div>

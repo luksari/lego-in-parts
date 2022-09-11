@@ -3,9 +3,9 @@ export type ShipmentFormData = {
   surname: string;
   phone: string;
   email: string;
-  dateOfBirth: string;
-  Address: string;
+  dateOfBirth: Date | null;
+  address: string;
   city: string;
   state: string;
-  postal: string;
+  zipcode: string;
 };
