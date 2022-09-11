@@ -1,3 +1,8 @@
+import { AxiosError } from 'axios';
+
+import { ShipmentFormData } from '@/app/summary/shipmentForm/ShipmentForm.types';
+import { MutationFn } from '@/hooks/useMutation/useMutation.types';
+
 export type Minifig = {
   set_num: string;
   name: string;
@@ -59,3 +64,18 @@ export type GetMinifigsResponse = {
 };
 
 export type RebrickableError = { detail: string };
+
+export type SubmitMinifigReqBody = {
+  minifig: Minifig;
+  shipment: ShipmentFormData;
+};
+
+export type SubmitMinifigResponse = {
+  message: string;
+};
+
+export type SubmitMinifigMutationFn = () => MutationFn<
+  SubmitMinifigReqBody,
+  SubmitMinifigResponse,
+  AxiosError<SubmitMinifigResponse>
+>;

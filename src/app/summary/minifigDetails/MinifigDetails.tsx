@@ -4,7 +4,7 @@ import { MinifigDetailsProps } from '@/app/summary/minifigDetails/MinifigDetails
 import noImage from '@/assets/nil_mf.webp';
 import { useStyles } from '@/app/summary/minifigDetails/MinifigDetails.styles';
 
-export const MinifigDetails = ({ minifig, parts, style }: MinifigDetailsProps) => {
+export const MinifigDetails = ({ minifig, parts, style, isSubmitting, isSummaryBtnDisabled }: MinifigDetailsProps) => {
   const { classes } = useStyles();
 
   return (
@@ -49,7 +49,14 @@ export const MinifigDetails = ({ minifig, parts, style }: MinifigDetailsProps) =
               ))}
             </ScrollArea.Autosize>
             <Center mt={'xl'}>
-              <Button radius={'xl'} size={'md'}>
+              <Button
+                radius={'xl'}
+                size={'md'}
+                type={'submit'}
+                form={'shipment-form'}
+                disabled={isSummaryBtnDisabled}
+                loading={isSubmitting}
+              >
                 Summary
               </Button>
             </Center>

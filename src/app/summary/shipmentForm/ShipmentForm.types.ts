@@ -9,3 +9,8 @@ export type ShipmentFormData = {
   state: string;
   zipcode: string;
 };
+
+export type ShipmentFormProps = {
+  onValidate: (isValid: boolean) => void;
+  onSubmit: (data: ShipmentFormData) => void;
+};

@@ -10,5 +10,5 @@ export default defineConfig({
   preview: {
     port: 8080,
   },
-  plugins: [react(), tsconfigPaths()]
+  plugins: [react(), tsconfigPaths()],
 })

@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { DatePicker } from '@mantine/dates';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputMask from 'react-input-mask';
+import { useEffect } from 'react';
 
-import { ShipmentFormData } from '@/app/summary/shipmentForm/ShipmentForm.types';
+import { ShipmentFormData, ShipmentFormProps } from '@/app/summary/shipmentForm/ShipmentForm.types';
 import { useStyles } from '@/app/summary/shipmentForm/ShipmentForm.styles';
 import { validationSchema } from '@/app/summary/shipmentForm/ShipmentForm.utils';
 
@@ -15,13 +16,17 @@ import { validationSchema } from '@/app/summary/shipmentForm/ShipmentForm.utils'
  * 4. Make focus state more visible
  * 5. Extract input mask to separate component
  * */
-export const ShipmentForm = () => {
+export const ShipmentForm = ({ onSubmit, onValidate }: ShipmentFormProps) => {
   const { classes } = useStyles();
-  const { register, setValue, formState, getValues } = useForm<ShipmentFormData>({
-    mode: 'onBlur',
-    reValidateMode: 'onBlur',
+  const { register, setValue, formState, handleSubmit } = useForm<ShipmentFormData>({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    onValidate(!Object.keys(formState.errors).length);
+  }, [formState, onValidate]);
 
   return (
     <div className={classes.wrapper}>
@@ -29,7 +34,7 @@ export const ShipmentForm = () => {
         <Title order={1} transform={'uppercase'} mb={'lg'} color={'white'}>
           Shipping details
         </Title>
-        <form>
+        <form id={'shipment-form'} onSubmit={handleSubmit(onSubmit)}>
           <Grid columns={12} gutter={'md'}>
             <Grid.Col span={6}>
               <TextInput
@@ -76,7 +81,9 @@ export const ShipmentForm = () => {
                 label={'Date of birth'}
                 error={formState.errors.dateOfBirth?.message}
                 {...register('dateOfBirth')}
-                onChange={(val) => setValue('dateOfBirth', val)}
+                onChange={(val) =>
+                  setValue('dateOfBirth', val, { shouldValidate: true, shouldDirty: true, shouldTouch: true })
+                }
               />
             </Grid.Col>
             <Grid.Col span={12}>

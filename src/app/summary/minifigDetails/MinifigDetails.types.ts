@@ -6,4 +6,6 @@ export type MinifigDetailsProps = {
   minifig: Minifig;
   parts?: MinifigPart[];
   style: CSSProperties;
+  isSummaryBtnDisabled: boolean;
+  isSubmitting: boolean;
 };
