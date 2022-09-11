@@ -11,6 +11,7 @@ export const AppRouter = () => {
       <Routes>
         <Route path={AppRoutes.Home.path} element={<Home />} />
         <Route path={AppRoutes.Catalog.path} element={<Catalog />} />
+        <Route path={AppRoutes.Summary.path} element={<Catalog />} />
       </Routes>
     </BrowserRouter>
   );
