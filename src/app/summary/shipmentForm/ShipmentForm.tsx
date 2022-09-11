@@ -1,10 +1,12 @@
-import { Grid } from '@mantine/core';
+import { Grid, TextInput } from '@mantine/core';
 
 export const ShipmentForm = () => {
   return (
     <form>
       <Grid columns={12} gutter={'xl'}>
-        <Grid.Col span={6}>Name</Grid.Col>
+        <Grid.Col span={6}>
+          <TextInput placeholder={'Your name'} />
+        </Grid.Col>
         <Grid.Col span={6}>Surname</Grid.Col>
         <Grid.Col span={12}>Phone number</Grid.Col>
         <Grid.Col span={12}>Email</Grid.Col>
