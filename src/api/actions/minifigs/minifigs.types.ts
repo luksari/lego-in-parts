@@ -9,7 +9,7 @@ export type Minifig = {
 
 export type ExternalPartId = string[];
 
-export type Part = {
+export type PartDetails = {
   part_num: string;
   name: string;
   part_cat_id: number;
@@ -35,7 +35,7 @@ export type Color = {
 export type MinifigPart = {
   id: number;
   inv_part_id: number;
-  part: Part;
+  part: PartDetails;
   color: Color;
   set_num: string;
   quantity: number;
@@ -48,7 +48,7 @@ export type GetMinifigsPartsResponse = {
   count: number;
   next: number | null;
   previous: number | null;
-  results: MinifigPart;
+  results: MinifigPart[];
 };
 
 export type GetMinifigsResponse = {

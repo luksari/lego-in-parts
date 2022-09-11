@@ -18,7 +18,8 @@ export const Catalog = () => {
     if (!chosenMinifig) {
       return;
     }
-    navigate(AppRoutes.Summary.getPath(chosenMinifig.set_num));
+
+    navigate(AppRoutes.Summary.getPath(chosenMinifig.set_num), { state: { minifig: chosenMinifig } });
   };
 
   if (!state) {
