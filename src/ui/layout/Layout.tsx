@@ -1,7 +1,16 @@
 import { ReactNode } from 'react';
+import { Container } from '@mantine/core';
 
-import { StyledWrapper } from './Layout.styles';
+import { useStyles } from './Layout.styles';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
-  return <StyledWrapper>{children}</StyledWrapper>;
+  const { classes } = useStyles();
+
+  return (
+    <div className={classes.wrapper}>
+      <Container size={'lg'} px={'xs'}>
+        {children}
+      </Container>
+    </div>
+  );
 };

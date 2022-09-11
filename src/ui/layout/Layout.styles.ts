@@ -1,11 +1,13 @@
-import styled from '@emotion/styled';
+import { createStyles } from '@mantine/core';
 
-export const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  background: ${({ theme }) => theme.colors.violet[9]};
-`;
+export const useStyles = createStyles((theme) => ({
+  wrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflowX: 'hidden',
+    width: '100vw',
+    height: '100vh',
+    background: theme.colors.violet[9],
+  },
+}));
